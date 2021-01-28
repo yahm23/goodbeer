@@ -40,8 +40,6 @@
     </div>
 
 
-    <!-- <input id="subject" type="text" name="subject" value="{{ message.subject ?? '' }}"> -->
-
     <p><label for="message">Message</label></p>
     <textarea rows="10" cols="40" id="message" name="message">{{ message.message ?? '' }}</textarea>
     {{ message is defined and message ? errorList(message.getErrors('message')) }}
