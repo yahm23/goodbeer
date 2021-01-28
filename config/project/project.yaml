@@ -1,0 +1,23 @@
+dateModified: 1611845766
+email:
+  fromEmail: yahmed1996a@gmail.com
+  fromName: 'http://localhost/goodbeer_project'
+  transportType: craft\mail\transportadapters\Sendmail
+plugins:
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+system:
+  edition: solo
+  live: true
+  name: GoodBeer
+  retryDuration: null
+  schemaVersion: 3.6.1
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true
