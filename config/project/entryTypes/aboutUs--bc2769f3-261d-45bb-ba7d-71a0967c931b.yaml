@@ -1,5 +1,5 @@
 fieldLayouts:
-  b1842d50-0142-41c0-94bc-a9171f512d25:
+  3f07c242-9f3f-489a-939b-3708f38d694c:
     tabs:
       -
         elements:
@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: dfc2ab5d-ce14-401c-9f0f-1fe08642bb46
+            fieldUid: 9914edc5-deee-43cd-aa48-08b53fcd65ff
             instructions: null
             label: null
             required: false
@@ -36,7 +36,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 9914edc5-deee-43cd-aa48-08b53fcd65ff
+            fieldUid: dfc2ab5d-ce14-401c-9f0f-1fe08642bb46
             instructions: null
             label: null
             required: false
@@ -49,7 +49,7 @@ fieldLayouts:
 handle: aboutUs
 hasTitleField: false
 name: 'About Us'
-section: 2e9630be-dc69-424d-8d5f-6f08669bacdf
+section: 04cd8c4e-6b8a-495a-865d-0e732230b78b
 sortOrder: 1
 titleFormat: '{section.name|raw}'
 titleTranslationKeyFormat: null
