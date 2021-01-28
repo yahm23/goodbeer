@@ -1,8 +1,8 @@
 contentColumnType: text
 fieldGroup: f6aa8431-ff9e-4797-a2d6-0bbec3c47434
-handle: richText
+handle: richTextContent
 instructions: ''
-name: 'Rich Text'
+name: 'Rich Text Content'
 searchable: false
 settings:
   availableTransforms: '*'

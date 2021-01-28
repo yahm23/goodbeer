@@ -3,14 +3,21 @@
 <head>
     <meta http-equiv="X-UA-Compatible"/>
     <meta charset="utf-8" />
-    <title>Welcome to Craft CMS</title>
+    <title>{{ siteName }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <link rel="stylesheet" href="{{ siteUrl }}assets/styles.css"/>
+    <link rel="stylesheet" href="{{ siteUrl }}/assets/styles.css"/>
 </head>
-<body class="ltr">
+<body >
     <h1>
         GoodBeer
     </h1>
-    {{entry.richText}}
+    <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="about">About Us</a></li>
+        <li><a href="our-products">Our products</a></li>
+        <li><a href="stockists">Stockists</a></li>
+    </ul>
+    {{entry.richTextTitle}}
+    {{entry.richTextContent}}
 </body>
 </html>
