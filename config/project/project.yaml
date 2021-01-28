@@ -1,4 +1,4 @@
-dateModified: 1611859549
+dateModified: 1611860664
 email:
   fromEmail: yahmed1996a@gmail.com
   fromName: 'http://localhost/goodbeer_project'
@@ -13,7 +13,7 @@ plugins:
       prependSender: 'Contact Form via GoodBeer:'
       prependSubject: 'New Contact message Good Beer'
       successFlashMessage: 'Your message has been sent.'
-      toEmail: yahmed1996a@gmail.com
+      toEmail: webmaster@whitespacers.com
   guest-entries:
     edition: standard
     enabled: true
