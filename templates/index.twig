@@ -18,7 +18,12 @@
         <li><a href="our-products">Our products</a></li>
         <li><a href="stockists">Stockists</a></li>
     </ul>
-    {{entry.richTextTitle}}
-    {{entry.richTextContent}}
+
+    <div>
+
+      {% block content %}
+
+      {% endblock %}
+    </div>
 </body>
 </html>
