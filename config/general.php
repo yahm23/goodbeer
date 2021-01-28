@@ -55,4 +55,7 @@ return [
         // Don’t allow updates on Production
         'allowUpdates' => false,
     ],
+    'siteUrl' => [
+        'PRIMARY_SITE_URL' => 'https://site-a.com/',
+    ],
 ];
