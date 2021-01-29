@@ -1,0 +1,18 @@
+contentColumnType: string(120)
+fieldGroup: 9fa8f28a-7bd8-4302-a153-78488cbd4bd7
+handle: productSlug
+instructions: ''
+name: 'Product Slug'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: 30
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

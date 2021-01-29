@@ -8,7 +8,4 @@ siteSettings:
     hasUrls: true
     template: our-products
     uriFormat: 'our-products/{slug}'
-structure:
-  maxLevels: null
-  uid: e8b154d2-d843-45d5-8857-c2dc9df0b7bb
-type: structure
+type: channel

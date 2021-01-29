@@ -6,7 +6,13 @@
 {% set entries = craft.entries.section('ourProducts') %}
 
 {% for entry in entries %}
-   {{ entry.title }}
+<div>
+    <a href="{{siteUrl}}our-products/{{entry.productSlug}}">
+        {{ entry.productName }} {{ entry.productAbv }}
+
+    </a>
+    <h2></h2>
+</div>
 {% endfor %}
 
 
