@@ -2,40 +2,66 @@
 
 {% block content %}
 
+{% set productList = craft.entries({section:'ourProducts'})%}
 
-{% set allSentries = craft.entries.section({
-    section: 'stockists',
-    postcode: 'EH1131AB'
-    })
-%}
-
-{% set results = craft.entries()
-    .search('Papa')
-    .all() 
-%}
 
 <div class="productList">
+    <div>
+        <h1>Find your local stockist</h1>
+    </div>
 
     <form sprig>
-        <input type="search" name="q" aria-label="NameSearch" placeholder="Business Name">
+        <input type="search" name="business" aria-label="NameSearch" placeholder="Business Name">
     
-        <input type="search" name="loc" aria-label="LocationSearch" placeholder="Location">
+        <!-- <input type="search" name="loc" aria-label="LocationSearch" placeholder="Location"> -->
+        <label>Filter by product:</label>
+        <select name="productQ" id="">
+            <option value="all">All</option>
+            {% for product in productList %}
+                <option value="{{product.slug}}">{{product.title}}</option>
+            {% endfor %}
+        
+        </select>
         <button type="submit">Go</button>
     </form>
     
 
-    {% set searchQuery1 = craft.app.request.getParam('q') %}
-    {% set searchQuery2 = craft.app.request.getParam('loc') %}
+    {% set business = craft.app.request.getParam('business') %}
     
-    {% set entries = craft.entries({section:'stockists'})
-    .search(searchQuery1)
-    .orderBy('score')
-    .all() 
-    %}
+    {# First you would find any training categories in the URL query string. #}
+    {% set productQuery = craft.app.request.getParam('productQ') %}
+    
+    {# Then find categories that match the slugs in your query string. #}
+    {% set product = craft.entries.section('ourProducts').slug(productQuery) %}
+    
+    {# setup search#}
+    {% set searchParams = {
+      relatedTo:  product,
+      section: 'stockists'
+    } %}
+    
+    {# Find entries #}
+    
+    {% if productQuery=='all' %}
+        {% set entries = craft.entries(searchParams).order('score') %}
 
+        {% else %}
+
+            {% if business|length %}
+                {% set entries = craft.entries(searchParams).search(business).order('score') %}
+            {% else %}
+                {% set entries = craft.entries(searchParams).order('score') %}
+            {% endif %}
+
+    {% endif %}
+    
+
+    {% set allStockists = craft.entries.section('stockists') %}
+
+    <p>{{productQuery}}</p>
 
     {% if entries|length %}
-        <p>{{ entries|length }} results:</p>
+        <p>Our stockists:</p>
 
             {% for entry in entries %}
             <div>
@@ -52,7 +78,22 @@
             {% endfor %}
 
     {% else %}
-        <p>Your search for “{{ searchQuery1 }}” didn’t return any results.</p>
+        <p>Your search for “{{ business }}” for the specific product didn’t return any results. Here are all our stockists: </p>
+    
+        {% for entry in allStockists %}
+            <div>
+                <a href="{{ entry.url }}">
+                    {{ entry.title }}
+                    {{ entry.fulladdress }}
+                </a>
+                    <p>Stocks our products:</p>
+                    {% for product in entry.productsList %}
+                        <p>{{product.productName}}</p>
+                    {% endfor %}
+            </div>
+
+        {% endfor %}
+        
     {% endif %}
 
 
