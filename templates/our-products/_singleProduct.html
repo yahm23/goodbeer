@@ -3,9 +3,20 @@
 {% block content %}
 
 
-<div>
-    <h2>{{entry.productName}}</h2>
-    <h3>{{entry.productAbv}}</h3>
+<div class="productInfo">
+
+    <div class="productGeneralInfo">
+        <h3>{{entry.productName}}</h3>
+        <h5>{{entry.productNotes}}</h5>
+        <h3>Pair With:</h3>
+        <h5>{{entry.productPairings}}</h5>
+    </div>
+
+    <div class="productNumericInfo">
+        <h5>ABV: {{entry.productAbv}}</h5>
+        <h5>{{entry.productFormats}}</h5>
+    </div>
+
 </div>
 
 
