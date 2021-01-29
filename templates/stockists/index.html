@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+{% set allSentries = craft.entries.section({
+    section: 'stockists',
+    postcode: 'EH1131AB'
+    })
+%}
+
+{% set results = craft.entries()
+    .search('Papa')
+    .all() 
+%}
+
+<div class="productList">
+
+    <form action="{{ url('stockists') }}">
+        <input type="search" name="q" aria-label="Search" placeholder="Search">
+        <button type="submit">Go</button>
+    </form>
+
+    {% set searchQuery = craft.app.request.getParam('q') %}
+    {% set entries = craft.entries({section:'stockists'})
+    .search(searchQuery)
+    .orderBy('score')
+    .all() %}
+
+    {% if entries|length %}
+        <p>{{ entries|length }} results:</p>
+
+            {% for entry in entries %}
+            <a href="{{ entry.url }}">{{ entry.title }}</a>
+            {% endfor %}
+
+    {% else %}
+        <p>Your search for “{{ searchQuery }}” didn’t return any results.</p>
+    {% endif %}
+
+
+</div>
+
+
+{% endblock %}
