@@ -3,7 +3,7 @@ fieldGroup: 21515fbb-8d8a-4b8b-956d-58972a8fbd45
 handle: longitude
 instructions: ''
 name: Longitude
-searchable: false
+searchable: true
 settings:
   byteLimit: null
   charLimit: null

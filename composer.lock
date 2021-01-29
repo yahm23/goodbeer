@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "11d276ed03a18764cbb20b24022d5d6d",
+    "content-hash": "77ecc85793079e4b4f8d8442a203eccd",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -933,27 +933,32 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.5",
+            "version": "7.2.0",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
-                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/0aa74dfb41ae110835923ef10a9d803a22d50e79",
+                "reference": "0aa74dfb41ae110835923ef10a9d803a22d50e79",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/promises": "^1.0",
-                "guzzlehttp/psr7": "^1.6.1",
-                "php": ">=5.5",
-                "symfony/polyfill-intl-idn": "^1.17.0"
+                "guzzlehttp/promises": "^1.4",
+                "guzzlehttp/psr7": "^1.7",
+                "php": "^7.2.5 || ^8.0",
+                "psr/http-client": "^1.0"
+            },
+            "provide": {
+                "psr/http-client-implementation": "1.0"
             },
             "suggest": {
+                "ext-curl": "Required for CURL handler support",
+                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.5-dev"
+                    "dev-master": "7.1-dev"
                 }
             },
             "autoload": {
@@ -972,6 +977,11 @@
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com",
                     "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com",
+                    "homepage": "https://sagikazarmark.hu"
                 }
             ],
             "description": "Guzzle is a PHP HTTP client library",
@@ -982,10 +992,12 @@
                 "framework",
                 "http",
                 "http client",
+                "psr-18",
+                "psr-7",
                 "rest",
                 "web service"
             ],
-            "time": "2020-06-16T21:01:06+00:00"
+            "time": "2020-10-10T11:47:56+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1089,6 +1101,38 @@
                 "url"
             ],
             "time": "2020-09-30T07:37:11+00:00"
+        },
+        {
+            "name": "ivopetkov/html5-dom-document-php",
+            "version": "v2.2.9",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ivopetkov/html5-dom-document-php/zipball/13306694beb2d413f9411e20f59a505d2ce3060b",
+                "reference": "13306694beb2d413f9411e20f59a505d2ce3060b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "php": "7.0.*|7.1.*|7.2.*|7.3.*|7.4.*|8.0.*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivo Petkov",
+                    "email": "ivo@ivopetkov.com",
+                    "homepage": "http://ivopetkov.com"
+                }
+            ],
+            "description": "HTML5 DOMDocument PHP library (extends DOMDocument)",
+            "time": "2021-01-17T21:29:24+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -1874,6 +1918,49 @@
             "time": "2017-02-14T16:28:37+00:00"
         },
         {
+            "name": "psr/http-client",
+            "version": "1.0.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-client/zipball/2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
+                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^8.0",
+                "psr/http-message": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Client\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP clients",
+            "homepage": "https://github.com/php-fig/http-client",
+            "keywords": [
+                "http",
+                "http-client",
+                "psr",
+                "psr-18"
+            ],
+            "time": "2020-06-29T06:28:15+00:00"
+        },
+        {
             "name": "psr/http-message",
             "version": "1.0.1",
             "dist": {
@@ -1957,6 +2044,46 @@
                 "psr-3"
             ],
             "time": "2020-03-23T09:12:05+00:00"
+        },
+        {
+            "name": "putyourlightson/craft-sprig",
+            "version": "1.3.2",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/putyourlightson/craft-sprig/zipball/444e3ef4e1aac97a3d1e9ce24a4034e1a4951dc9",
+                "reference": "444e3ef4e1aac97a3d1e9ce24a4034e1a4951dc9",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.1.19",
+                "ivopetkov/html5-dom-document-php": "^2.2.8"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Sprig",
+                "handle": "sprig",
+                "developer": "PutYourLightsOn",
+                "developerUrl": "https://putyourlightson.com/",
+                "documentationUrl": "https://putyourlightson.com/plugins/sprig",
+                "changelogUrl": "https://raw.githubusercontent.com/putyourlightson/craft-sprig/v1/CHANGELOG.md",
+                "class": "putyourlightson\\sprig\\Sprig",
+                "schemaVersion": "1.0.1"
+            },
+            "autoload": {
+                "psr-4": {
+                    "putyourlightson\\sprig\\": "src/"
+                }
+            },
+            "license": [
+                "mit"
+            ],
+            "description": "A reactive Twig component framework for Craft.",
+            "support": {
+                "docs": "https://putyourlightson.com/plugins/sprig",
+                "source": "https://github.com/putyourlightson/craft-sprig",
+                "issues": "https://github.com/putyourlightson/craft-sprig/issues"
+            },
+            "time": "2021-01-29T08:22:15+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
