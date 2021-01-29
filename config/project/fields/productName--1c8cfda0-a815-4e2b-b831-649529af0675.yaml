@@ -3,7 +3,7 @@ fieldGroup: 9fa8f28a-7bd8-4302-a153-78488cbd4bd7
 handle: productName
 instructions: ''
 name: 'Product Name'
-searchable: false
+searchable: true
 settings:
   availableTransforms: '*'
   availableVolumes: '*'

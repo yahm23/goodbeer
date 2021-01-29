@@ -38,20 +38,19 @@
         <p>{{ entries|length }} results:</p>
 
             {% for entry in entries %}
-            <a href="{{ entry.url }}">
-                {{ entry.title }}
-                {{ entry.fulladdress }}
-
-                    <p>
-                        {{entry.productsList.productName}}
-                    </p>
-                    <p>Stocks:</p>
+            <div>
+                <a href="{{ entry.url }}">
+                    {{ entry.title }}
+                    {{ entry.fulladdress }}
+                </a>
+                    <p>Stocks our products:</p>
                     {% for product in entry.productsList %}
-                        <p>
+                        <a href="{{ product.url}}">
                             {{product.productName}}
-                        </p>
+                        </a>
                     {% endfor %}
-            </a>
+            </div>
+
             {% endfor %}
 
     {% else %}
