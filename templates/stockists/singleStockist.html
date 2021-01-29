@@ -1,1 +1,25 @@
-<h1>Single page</h1>
+{% extends "index.html" %}
+
+{% block content %}
+
+
+<div class="productInfo">
+
+    <div class="productGeneralInfo">
+        <h3>{{entry.businessName}}</h3>
+        <p>Stocks our products:</p>
+            {% for product in entry.productsList %}
+                <a href="{{ product.url}}">
+                    {{product.productName}}
+                </a>
+            {% endfor %}
+        <h3>Address:</h3>
+        <h5>{{entry.fulladdress}}</h5>
+
+        
+    </div>
+
+</div>
+
+
+{% endblock %}

@@ -45,9 +45,7 @@
                 </a>
                     <p>Stocks our products:</p>
                     {% for product in entry.productsList %}
-                        <a href="{{ product.url}}">
-                            {{product.productName}}
-                        </a>
+                        <p>{{product.productName}}</p>
                     {% endfor %}
             </div>
 
