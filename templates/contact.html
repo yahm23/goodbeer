@@ -13,8 +13,8 @@
 {% endmacro %}
 
 {% from _self import errorList %}
-<h1 class="text-4xl text-black font-display my-4">{{entry.richTextTitle}}</h1>
-<form method="post" action="" accept-charset="UTF-8">
+<h1 class="contactTitle">{{entry.richTextTitle}}</h1>
+<form class="contactForm" method="post" action="" accept-charset="UTF-8">
     {{ csrfInput() }}
     <input type="hidden" name="action" value="contact-form/send">
     {{ redirectInput('/thanks') }}
