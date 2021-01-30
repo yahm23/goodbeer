@@ -7,15 +7,25 @@
 {# First find params in URL query string. #}
 {% set business = craft.app.request.getParam('business') %}
 {% set productQuery = craft.app.request.getParam('productQ') %}
+{% set city = craft.app.request.getParam('city') %}
+
+
+
+{# IP search attempt, didn't work due to localhost IP  #}
+{# {{ craft.app.request.userIP }} #}
+{# {% set ip =  craft.app.request.userIP %}
+{% set userLocation = craft.maps.getUserLocation([ip]) %} #}
+{# {% set userLocation = craft.maps.getUserLocation([postcode]) %}  #}
 
 <div class="productList">
+
     <div>
         <h1>Find your local stockist</h1>
     </div>
 
     <form >
         <label>Filter by </label>
-        <input type="search" name="business" aria-label="NameSearch" placeholder="{{(business)? business:'Name or Address'}}">
+        <input type="search" name="business" placeholder="{{(business)? business:'Name or Address'}}">
         
         <label>and/or product:</label>
         <select name="productQ" id="">
@@ -23,8 +33,10 @@
             {% for product in productList %}
                 <option {{(productQuery==product.slug)? 'selected':''}} value="{{product.slug}}">{{product.title}}</option>
             {% endfor %}
-        
         </select>
+         <label>Sort closest to you</label>
+        <input type="search" name="city" placeholder="{{(city)? city:'Nearest City'}}">
+        
         <button type="submit">Go</button>
     </form>
     
@@ -38,6 +50,12 @@
       relatedTo:  product,
       section: 'stockists'
     } %}
+
+    {% set locationParams = {
+        location:city,
+        radius: 10,
+        unit: 'mi',
+    } %}
     
     {# Find filtered Entries #}
     
@@ -46,21 +64,21 @@
 
         {#  A name or location search #}
         {% if business|length %}
-            {% set entries = craft.entries(searchParams).search(business).order('score').all() %}
+            {% set entries = craft.entries(searchParams).search(business).order('score').stockistLocation(locationParams).all() %}
 
         {#  Both fields left empty #}
         {% else %}
-            {% set entries = craft.entries.section('stockists').all() %}
+            {% set entries = craft.entries.section('stockists').stockistLocation(locationParams).all() %}
         {% endif %}
         
 
-        {% else %}
+    {% else %}
 
-            {% if business|length %}
-                {% set entries = craft.entries(searchParams).search(business).order('score').all() %}
-            {% else %}
-                {% set entries = craft.entries(searchParams).order('score').all() %}
-            {% endif %}
+        {% if business|length %}
+            {% set entries = craft.entries(searchParams).search(business).order('score').stockistLocation(locationParams).all() %}
+        {% else %}
+            {% set entries = craft.entries(searchParams).order('score').stockistLocation(locationParams).all() %}
+        {% endif %}
 
     {% endif %}
     
@@ -68,6 +86,7 @@
     {% set allStockists = craft.entries.section('stockists') %}
 
 
+        {# <p>postcode {{userLocation.postcode}}</p> #}
     {% if entries|length %}
         <p>Our stockists:</p>
 
@@ -118,7 +137,6 @@
         {% endfor %}
         
     {% endif %}
-
 
 </div>
 
