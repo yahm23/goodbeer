@@ -26,14 +26,10 @@
                 </a>
             {% endfor %}
         <h3>Address:</h3>
-        <h5>{{entry.fulladdress}}</h5>
+        <h5>{{ entry.addressLine1 }}{{ entry.addressLine2 }} {{ entry.addressLine3 }}{{ entry.addressLine4}} {{ entry.postcode }}</h5>
         
         <div class="map">
             {{map}}
-            {# {{ craft.maps.embed({
-                center: [entry.latitude, entry.longitude],
-                markers: [[entry.latitude, entry.longitude]]
-            }) }} #}
         </div>
         
     </div>
