@@ -3,6 +3,18 @@
 {% block content %}
 
 
+    {% if ( entry.latitude | length < 0 ) or ( entry.longitude | length < 0 ) %}
+        {% set map =craft.maps.embed({
+            center: [entry.latitude, entry.longitude],
+            markers: [[entry.latitude, entry.longitude]]
+        }) %}   
+        
+    {% else %}
+            {% set map = craft.maps.embed({
+                center: entry.postcode,
+                markers: [[entry.postcode]]
+            }) %}   
+    {% endif %}
 <div class="productInfo">
 
     <div class="productGeneralInfo">
@@ -17,11 +29,11 @@
         <h5>{{entry.fulladdress}}</h5>
         
         <div class="map">
-
-            {{ craft.maps.embed({
+            {{map}}
+            {# {{ craft.maps.embed({
                 center: [entry.latitude, entry.longitude],
                 markers: [[entry.latitude, entry.longitude]]
-            }) }}
+            }) }} #}
         </div>
         
     </div>
