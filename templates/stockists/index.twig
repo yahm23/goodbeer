@@ -42,7 +42,7 @@
         <input type="search" name="city" placeholder="{{(city)? city:'Nearest City'}}">
 
         <label>Radius(km)</label>
-        <input type="number" name="radius" placeholder="{{(radius)? radius:'km'}}">
+        <input type="number" name="radius" placeholder="{{(radius)? radius:'10'}}">
         
         <button type="submit">Go</button>
     </form>
@@ -72,20 +72,20 @@
 
         {#  A name or location search #}
         {% if business|length %}
-            {% set entries = craft.entries(searchParams).search(business).order('score').stockistLocation(locationParams).all() %}
+            {% set entries = craft.entries(searchParams).search(business).stockistLocation(locationParams).order('score').all() %}
 
         {#  Both fields left empty #}
         {% else %}
-            {% set entries = craft.entries.section('stockists').stockistLocation(locationParams).all() %}
+            {% set entries = craft.entries.section('stockists').stockistLocation(locationParams).order('score').all() %}
         {% endif %}
         
 
     {% else %}
 
         {% if business|length %}
-            {% set entries = craft.entries(searchParams).search(business).order('score').stockistLocation(locationParams).all() %}
+            {% set entries = craft.entries(searchParams).search(business).stockistLocation(locationParams).order('score').all() %}
         {% else %}
-            {% set entries = craft.entries(searchParams).order('score').stockistLocation(locationParams).all() %}
+            {% set entries = craft.entries(searchParams).stockistLocation(locationParams).order('score').all() %}
         {% endif %}
 
     {% endif %}
