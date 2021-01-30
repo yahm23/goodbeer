@@ -13,7 +13,7 @@
         <h1>Find your local stockist</h1>
     </div>
 
-    <form sprig>
+    <form >
         <label>Filter by </label>
         <input type="search" name="business" aria-label="NameSearch" placeholder="{{(business)? business:'Name or Address'}}">
         
@@ -30,7 +30,7 @@
     
 
     
-    {# Then find categories that match the slugs in your query string. #}
+    {# Then find products that match the slugs in query string. #}
     {% set product = craft.entries.section('ourProducts').slug(productQuery) %}
     
     {# setup search#}
@@ -45,16 +45,16 @@
         {% if business|length %}
             {% set entries = craft.entries(searchParams).search(business).order('score').all() %}
         {% else %}
-            {% set entries =craft.entries.section('stockists') %}
+            {% set entries = craft.entries.section('stockists').all() %}
         {% endif %}
         
 
         {% else %}
 
             {% if business|length %}
-                {% set entries = craft.entries(searchParams).search('Papa').order('score') %}
+                {% set entries = craft.entries(searchParams).search(business).order('score').all() %}
             {% else %}
-                {% set entries = craft.entries(searchParams).order('score') %}
+                {% set entries = craft.entries(searchParams).order('score').all() %}
             {% endif %}
 
     {% endif %}
@@ -63,6 +63,7 @@
     {% set allStockists = craft.entries.section('stockists') %}
 
 
+        <p>{{business}}</p>
     {% if entries|length %}
         <p>Our stockists:</p>
 
@@ -91,17 +92,22 @@
         <p>Your search didn’t return any results. Here are all our stockists: </p>
     
         {% for entry in allStockists %}
-            <div class="stockist">
-                <a href="{{ entry.url }}">
-                    {{ entry.title }}
-                    {{ entry.addressLine1 }}{{ entry.addressLine2 }} {{ entry.addressLine3 }}{{ entry.addressLine4}} {{ entry.postcode }}
-
-                </a>
-                    <p>Stocks our products:</p>
-                    {% for product in entry.productsList %}
-                        <p>{{product.productName}}</p>
-                    {% endfor %}
-            </div>
+            <a href="{{ entry.url }}">
+                <div class="stockist">
+                    <div>
+                        <h3> {{ entry.title }} </h3>
+                        <p>
+                        {{ entry.addressLine1 }}{{ entry.addressLine2 }} {{ entry.addressLine3 }}{{ entry.addressLine4}} {{ entry.postcode }}
+                        </p>
+                    </div>
+                    <div>
+                        <h5>Stocks our products:</h5>
+                        {% for product in entry.productsList %}
+                            <p>{{product.productName}}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </a>
 
         {% endfor %}
         

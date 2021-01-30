@@ -2,7 +2,7 @@
 
 {% block content %}
 
-
+    {# Determining if their is a lat and longitude value, if not will center and marker based on postcode #}
     {% if ( entry.latitude | length < 0 ) or ( entry.longitude | length < 0 ) %}
         {% set map =craft.maps.embed({
             center: [entry.latitude, entry.longitude],
