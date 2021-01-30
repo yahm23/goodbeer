@@ -51,6 +51,7 @@
       section: 'stockists'
     } %}
 
+    {# Limited to within 10 miles around searched city #}
     {% set locationParams = {
         location:city,
         radius: 10,
@@ -112,7 +113,7 @@
             {% endfor %}
 
     {% else %}
-    {# If results are blank, present all stockists with mesaage #}
+    {# If results are blank, present all stockists with message #}
 
         <p>Your search didn’t return any results. Here are all our stockists: </p>
     
