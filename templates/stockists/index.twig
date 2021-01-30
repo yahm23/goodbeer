@@ -8,6 +8,7 @@
 {% set business = craft.app.request.getParam('business') %}
 {% set productQuery = craft.app.request.getParam('productQ') %}
 {% set city = craft.app.request.getParam('city') %}
+{% set radius = craft.app.request.getParam('radius') %}
 
 
 
@@ -34,8 +35,14 @@
                 <option {{(productQuery==product.slug)? 'selected':''}} value="{{product.slug}}">{{product.title}}</option>
             {% endfor %}
         </select>
-         <label>Sort closest to you</label>
+        
+        <br>
+
+        <label>Nearest City</label>
         <input type="search" name="city" placeholder="{{(city)? city:'Nearest City'}}">
+
+        <label>Radius(km)</label>
+        <input type="number" name="radius" placeholder="{{(radius)? radius:'km'}}">
         
         <button type="submit">Go</button>
     </form>
@@ -51,11 +58,11 @@
       section: 'stockists'
     } %}
 
-    {# Limited to within 10 miles around searched city #}
+    {# Uses user input of radius  #}
     {% set locationParams = {
         location:city,
-        radius: 10,
-        unit: 'mi',
+        radius: ((radius)? radius:20),
+        unit: 'km',
     } %}
     
     {# Find filtered Entries #}
