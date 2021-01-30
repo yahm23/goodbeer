@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: ad9b672f-ea7c-4b45-ad43-ac2cccfda932
+handle: navbarEntry
+instructions: ''
+name: 'Navbar Entry'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -17,11 +17,17 @@
         <div class="nav">
             <label id="navLabel" for="toggle">&#9776;</label>
             <input type="checkbox" id="toggle"/>
+            {% set navs = craft.entries({
+                section: 'navbar',
+                order: 'order'
+              }) %}
+
             <div class="menu">
                 <a href="{{siteUrl}}">Home</a>
-                <a href="{{siteUrl}}about-us">About Us</a>
-                <a href="{{siteUrl}}our-products">Our Products</a>
-                <a href="{{siteUrl}}stockists">Stockists</a>
+                {% for entry in navs %}
+                    <a href="{{siteUrl}}{{entry.slug}}">{{entry.navbarEntry}}</a>
+                {% endfor %}
+        
             </div>
         </div>
     </div>
