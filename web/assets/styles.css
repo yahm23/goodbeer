@@ -149,6 +149,9 @@ body{
     max-width: var(--pageContentMaxWidth);
 }
 
+.thankYou{
+    text-align: center;
+}
 /* Links */
 
 a:link {
