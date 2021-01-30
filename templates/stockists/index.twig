@@ -23,7 +23,7 @@
     <div>
         <h1>Find your local stockist</h1>
     </div>
-
+    {# Query/ Filter form for stockist  #}
     <form >
         <label>Filter by </label>
         <input type="search" name="business" placeholder="{{(business)? business:'Name or Address'}}">
@@ -52,20 +52,20 @@
     {# Then find products that match the slugs in query string. #}
     {% set product = craft.entries.section('ourProducts').slug(productQuery) %}
     
-    {# setup search#}
+    {# Product params #}
     {% set searchParams = {
       relatedTo:  product,
       section: 'stockists'
     } %}
 
-    {# Uses user input of radius  #}
+    {# Location city and radius params #}
     {% set locationParams = {
         location:city,
         radius: ((radius)? radius:20),
         unit: 'km',
     } %}
     
-    {# Find filtered Entries #}
+    {# Find matched filtered Entries #}
     
     {# ie All Products, just a search #}
     {% if productQuery=='' %}
@@ -94,7 +94,6 @@
     {% set allStockists = craft.entries.section('stockists') %}
 
 
-        {# <p>postcode {{userLocation.postcode}}</p> #}
     {% if entries|length %}
         <p>Our stockists:</p>
 
