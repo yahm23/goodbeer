@@ -14,40 +14,44 @@
 
 {% from _self import errorList %}
 <h1 class="contactTitle">{{entry.richTextTitle}}</h1>
-<form class="contactForm" method="post" action="" accept-charset="UTF-8">
-    {{ csrfInput() }}
-    <input type="hidden" name="action" value="contact-form/send">
-    {{ redirectInput('/thanks') }}
+<div class="contactContents">
+    <form class="contactForm" method="post" action="" accept-charset="UTF-8">
+        {{ csrfInput() }}
+        <input type="hidden" name="action" value="contact-form/send">
+        {{ redirectInput('/thanks') }}
 
-    <p><label for="from-name">Your Name</label></p>
-    <input id="from-name" type="text" name="fromName" value="{{ message.fromName ?? '' }}">
-    {{ message is defined and message ? errorList(message.getErrors('fromName')) }}
+        <p><label for="from-name">Your Name</label></p>
+        <input id="from-name" type="text" name="fromName" value="{{ message.fromName ?? '' }}">
+        {{ message is defined and message ? errorList(message.getErrors('fromName')) }}
 
-    <p><label for="from-email">Your Email Address</label></p>
-    <input id="from-email" type="email" name="fromEmail" value="{{ message.fromEmail ?? '' }}">
-    {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
+        <p><label for="from-email">Your Email Address</label></p>
+        <input id="from-email" type="email" name="fromEmail" value="{{ message.fromEmail ?? '' }}">
+        {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
 
-    <p>What are you contacting us about?</p>
+        <p>What are you contacting us about?</p>
+        <div>
+            <label><input type="radio" name="subject" value="{{ message.subject ?? 'Product Information' }}">Product Information</label><br>
+            {{ message is defined and message ? errorList(message.getErrors('subject')) }}
+            <label><input type="radio" name="subject" value="{{ message.subject ?? 'Customer Care Enquiries' }}">Customer Care Enquiries</label><br>
+            {{ message is defined and message ? errorList(message.getErrors('subject')) }}
+            <label><input type="radio" name="subject" value="{{ message.subject ?? 'Licenses and Branding' }}">Licenses and Branding</label><br>
+            {{ message is defined and message ? errorList(message.getErrors('subject')) }}
+            <label><input type="radio" name="subject" checked value="{{ message.subject ?? 'General' }}">General</label><br>
+            {{ message is defined and message ? errorList(message.getErrors('subject')) }}
+        </div>
+
+        <br>
+        <p><label for="message">Message</label></p>
+        <textarea rows="5" cols="30" id="message" name="message">{{ message.message ?? '' }}</textarea>
+        {{ message is defined and message ? errorList(message.getErrors('message')) }}
+        <br>
+        <input type="submit" value="Send">
+    </form>
+
     <div>
-        <label><input type="radio" name="subject" value="{{ message.subject ?? 'Product Information' }}">Product Information</label>
-        {{ message is defined and message ? errorList(message.getErrors('subject')) }}
-        <label><input type="radio" name="subject" value="{{ message.subject ?? 'Customer Care Enquiries' }}">Customer Care Enquiries</label>
-        {{ message is defined and message ? errorList(message.getErrors('subject')) }}
-        <label><input type="radio" name="subject" value="{{ message.subject ?? 'Licenses and Branding' }}">Licenses and Branding</label>
-        {{ message is defined and message ? errorList(message.getErrors('subject')) }}
-        <label><input type="radio" name="subject" checked value="{{ message.subject ?? 'General' }}">General</label>
-        {{ message is defined and message ? errorList(message.getErrors('subject')) }}
+        {{entry.richTextContent}}
     </div>
-
-
-    <p><label for="message">Message</label></p>
-    <textarea rows="10" cols="40" id="message" name="message">{{ message.message ?? '' }}</textarea>
-    {{ message is defined and message ? errorList(message.getErrors('message')) }}
-
-    <input type="submit" value="Send">
-</form>
-
-{{entry.richTextContent}}
+</div>
 
 
 {% endblock %}
