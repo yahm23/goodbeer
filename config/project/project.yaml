@@ -1,4 +1,4 @@
-dateModified: 1611937248
+dateModified: 1612004997
 email:
   fromEmail: yahmed1996a@gmail.com
   fromName: 'http://localhost/goodbeer_project'
@@ -25,10 +25,27 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.3.0
-  sprig:
-    edition: standard
+  simplemap:
+    edition: pro
     enabled: true
-    schemaVersion: 1.0.1
+    licenseKey: 8HKMYC2H7TQYBXQR8DRVXDCO
+    schemaVersion: 3.4.2
+    settings:
+      apiKey: null
+      browserApiKey: null
+      disablePopulateMissingFieldData: false
+      geoLocationAutoRedirect: false
+      geoLocationCacheDuration: 5094000
+      geoLocationService: none
+      geoLocationToken: ''
+      geoService: nominatim
+      geoToken: ''
+      mapTiles: wikimedia
+      mapToken: ''
+      serverApiKey: null
+      unrestrictedApiKey: null
+      w3wEnabled: ''
+      w3wToken: ''
 system:
   edition: solo
   live: true

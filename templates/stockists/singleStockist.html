@@ -15,7 +15,14 @@
             {% endfor %}
         <h3>Address:</h3>
         <h5>{{entry.fulladdress}}</h5>
+        
+        <div class="map">
 
+            {{ craft.maps.embed({
+                center: [entry.latitude, entry.longitude],
+                markers: [[entry.latitude, entry.longitude]]
+            }) }}
+        </div>
         
     </div>
 
