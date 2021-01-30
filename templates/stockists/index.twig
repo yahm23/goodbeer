@@ -4,6 +4,9 @@
 
 {% set productList = craft.entries({section:'ourProducts'})%}
 
+{# First find params in URL query string. #}
+{% set business = craft.app.request.getParam('business') %}
+{% set productQuery = craft.app.request.getParam('productQ') %}
 
 <div class="productList">
     <div>
@@ -11,14 +14,14 @@
     </div>
 
     <form sprig>
-        <input type="search" name="business" aria-label="NameSearch" placeholder="Business Name">
-    
-        <!-- <input type="search" name="loc" aria-label="LocationSearch" placeholder="Location"> -->
-        <label>Filter by product:</label>
+        <label>Filter by </label>
+        <input type="search" name="business" aria-label="NameSearch" placeholder="{{(business)? business:'Name or Address'}}">
+        
+        <label>and/or product:</label>
         <select name="productQ" id="">
             <option value="">All</option>
             {% for product in productList %}
-                <option value="{{product.slug}}">{{product.title}}</option>
+                <option {{(productQuery==product.slug)? 'selected':''}} value="{{product.slug}}">{{product.title}}</option>
             {% endfor %}
         
         </select>
@@ -26,10 +29,6 @@
     </form>
     
 
-    {% set business = craft.app.request.getParam('business') %}
-    
-    {# First you would find any training categories in the URL query string. #}
-    {% set productQuery = craft.app.request.getParam('productQ') %}
     
     {# Then find categories that match the slugs in your query string. #}
     {% set product = craft.entries.section('ourProducts').slug(productQuery) %}
@@ -63,7 +62,6 @@
 
     {% set allStockists = craft.entries.section('stockists') %}
 
-    <p>{{productQuery}}</p>
 
     {% if entries|length %}
         <p>Our stockists:</p>
@@ -83,13 +81,14 @@
             {% endfor %}
 
     {% else %}
-        <p>Your search for “{{ business }}” didn’t return any results. Here are all our stockists: </p>
+        <p>Your search didn’t return any results. Here are all our stockists: </p>
     
         {% for entry in allStockists %}
             <div>
                 <a href="{{ entry.url }}">
                     {{ entry.title }}
-                    {{ entry.fulladdress }}
+                    {{ entry.addressLine1 }}{{ entry.addressLine2 }} {{ entry.addressLine3 }}{{ entry.addressLine4}} {{ entry.postcode }}
+
                 </a>
                     <p>Stocks our products:</p>
                     {% for product in entry.productsList %}
