@@ -39,11 +39,16 @@
       section: 'stockists'
     } %}
     
-    {# Find entries #}
+    {# Find filtered Entries #}
     
+    {# ie All Products, just a search #}
     {% if productQuery=='' %}
+
+        {#  A name or location search #}
         {% if business|length %}
             {% set entries = craft.entries(searchParams).search(business).order('score').all() %}
+
+        {#  Both fields left empty #}
         {% else %}
             {% set entries = craft.entries.section('stockists').all() %}
         {% endif %}
@@ -63,7 +68,6 @@
     {% set allStockists = craft.entries.section('stockists') %}
 
 
-        <p>{{business}}</p>
     {% if entries|length %}
         <p>Our stockists:</p>
 
@@ -89,6 +93,8 @@
             {% endfor %}
 
     {% else %}
+    {# If results are blank, present all stockists with mesaage #}
+
         <p>Your search didn’t return any results. Here are all our stockists: </p>
     
         {% for entry in allStockists %}
