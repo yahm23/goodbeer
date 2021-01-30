@@ -67,16 +67,23 @@
         <p>Our stockists:</p>
 
             {% for entry in entries %}
-            <div>
-                <a href="{{ entry.url }}">
-                    {{ entry.title }}
-                    {{ entry.fulladdress }}
-                </a>
-                    <p>Stocks our products:</p>
-                    {% for product in entry.productsList %}
-                        <p>{{product.productName}}</p>
-                    {% endfor %}
-            </div>
+            
+            <a href="{{ entry.url }}">
+                <div class="stockist">
+                    <div>
+                        <h3> {{ entry.title }} </h3>
+                        <p>
+                        {{ entry.addressLine1 }}{{ entry.addressLine2 }} {{ entry.addressLine3 }}{{ entry.addressLine4}} {{ entry.postcode }}
+                        </p>
+                    </div>
+                    <div>
+                        <h5>Stocks our products:</h5>
+                        {% for product in entry.productsList %}
+                            <p>{{product.productName}}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </a>
 
             {% endfor %}
 
@@ -84,7 +91,7 @@
         <p>Your search didn’t return any results. Here are all our stockists: </p>
     
         {% for entry in allStockists %}
-            <div>
+            <div class="stockist">
                 <a href="{{ entry.url }}">
                     {{ entry.title }}
                     {{ entry.addressLine1 }}{{ entry.addressLine2 }} {{ entry.addressLine3 }}{{ entry.addressLine4}} {{ entry.postcode }}

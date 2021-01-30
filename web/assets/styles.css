@@ -96,6 +96,88 @@ body{
     border-radius: 15px;
 }
 
+
+.productInfo{
+    text-align: left;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    column-gap: 50px;
+    align-items: center;
+    justify-items: center;
+    max-width: var(--pageContentMaxWidth);
+    margin: 100px auto;
+}
+
+.productGeneralInfo{
+    padding: 5%;
+    background-color: var(--lightWhite);
+    border-radius: 25px;
+}
+
+.productNumericInfo{
+    padding: 5%;
+    background-color: var(--lightWhite);
+    border-radius: 10%;
+    display: grid;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+}
+
+.map{
+    position: relative;
+    z-index: 1 !important;
+}
+
+
+.stockist{
+    border: 1px solid var(--darkColour) ;
+    margin: 20px 0px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    border-radius: 20px;
+}
+
+.singleStockist{
+    margin: 0 auto;
+    text-align: left;
+    display: grid;
+    max-width: 90vw;
+    justify-items: center;
+    max-width: var(--pageContentMaxWidth);
+}
+
+/* Links */
+
+a:link {
+    color: var(--darkLink);
+    text-decoration: none;
+}
+
+a:visited {
+    color: none;
+    text-decoration: none;
+}
+
+a:focus {
+    border-bottom: 1px solid;
+    text-decoration: none;
+}
+
+a:hover {
+    border-bottom: 1px solid;
+    text-decoration: none;
+}
+
+a:active {
+    background: var(--darkLink);
+    color: var(--lightLink);
+    text-decoration: none;
+}
+  
+
 @media only screen and (max-width: 500px) {
     #navLabel {
         display: block;
@@ -131,61 +213,11 @@ body{
         margin: 30px 20px;
         padding: 0;
     }
+    .stockist{
+        padding: 20px;
+    }
+    .map{
+        max-width: 80vw;
+        overflow: hidden;
+    }
 }
-
-.productInfo{
-    text-align: left;
-    display: grid;
-    grid-template-columns: 70% 30%;
-    column-gap: 50px;
-    align-items: center;
-    justify-items: center;
-    max-width: var(--pageContentMaxWidth);
-    margin: 100px auto;
-}
-
-.productGeneralInfo{
-    padding: 5%;
-    background-color: var(--lightWhite);
-    border-radius: 25px;
-}
-
-.productNumericInfo{
-    padding: 5%;
-    background-color: var(--lightWhite);
-    border-radius: 10%;
-    display: grid;
-    justify-content: center;
-    height: 100%;
-    width: 50%;
-}
-
-.map{
-    position: relative;
-    z-index: 1 !important;
-}
-
-/* Links */
-
-a:link {
-    color: var(--darkLink);
-}
-
-a:visited {
-    color: none;
-}
-
-a:focus {
-    border-bottom: 1px solid;
-    /* background: #BAE498; */
-}
-
-a:hover {
-    border-bottom: 1px solid;
-}
-
-a:active {
-    background: var(--darkLink);
-    color: var(--lightLink);
-}
-  
