@@ -59,9 +59,10 @@
     } %}
 
     {# Location city and radius params #}
+    {# Sets a default  city to edinburgh with a large radius if both left empty #}
     {% set locationParams = {
-        location:city,
-        radius: ((radius)? radius:20),
+        location:((city)? city:'Edinburgh'),
+        radius: ((city)?((radius)? radius:20) :((radius)? radius:10000)), 
         unit: 'km',
     } %}
     
